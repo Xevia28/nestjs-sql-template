@@ -25,7 +25,7 @@
 
 Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/en/) (LTS version 18+ recommended)
-- [Yarn](https://yarnpkg.com/getting-started/install) (v1.22.22+ recommended)
+- [pnpm](https://pnpmpkg.com/getting-started/install) (v1.22.22+ recommended)
 - [Git](https://git-scm.com/)
 - A PostgreSQL database (v12+ recommended)
 
@@ -42,7 +42,7 @@ cd my-nest-app
 cp .env.example .env
 
 # Install dependencies
-yarn install
+pnpm install
 
 # Configure your database settings in .env file
 # DB_HOST=localhost
@@ -52,7 +52,7 @@ yarn install
 # DB_DATABASE=nest_boilerplate
 
 # Start the development server
-yarn start:dev
+pnpm start:dev
 ```
 
 Your application will be available at `http://localhost:3000` and API documentation at `http://localhost:3000/documentation`.
@@ -62,70 +62,70 @@ Your application will be available at `http://localhost:3000` and API documentat
 ### Development
 ```bash
 # Start development server with Vite
-yarn start:dev
+pnpm start:dev
 
 # Start with NestJS CLI (alternative)
-yarn nest:start:dev
+pnpm nest:start:dev
 
 # Start with file watching
-yarn watch:dev
+pnpm watch:dev
 
 # Start with debugger
-yarn nest:start:debug
+pnpm nest:start:debug
 ```
 
 ### Production
 ```bash
 # Build for production
-yarn build:prod
+pnpm build:prod
 
 # Start production server
-yarn start:prod
+pnpm start:prod
 ```
 
 ### Testing
 ```bash
 # Run unit tests
-yarn test
+pnpm test
 
 # Run tests in watch mode
-yarn test:watch
+pnpm test:watch
 
 # Run e2e tests
-yarn test:e2e
+pnpm test:e2e
 
 # Run test coverage
-yarn test:cov
+pnpm test:cov
 
 # Run tests with debugger
-yarn test:debug
+pnpm test:debug
 ```
 
 ### Database Operations
 ```bash
 # Generate new migration
-yarn migration:generate migration_name
+pnpm migration:generate migration_name
 
 # Create empty migration
-yarn migration:create migration_name
+pnpm migration:create migration_name
 
 # Revert last migration
-yarn migration:revert
+pnpm migration:revert
 
 # Drop database schema
-yarn schema:drop
+pnpm schema:drop
 ```
 
 ### Code Quality
 ```bash
 # Run ESLint
-yarn lint
+pnpm lint
 
 # Fix ESLint issues
-yarn lint:fix
+pnpm lint:fix
 
 # Update dependencies
-yarn taze
+pnpm taze
 ```
 
 ## Runtime Support
@@ -137,10 +137,10 @@ The traditional and most stable runtime environment with full ecosystem support.
 
 ```bash
 # Development
-yarn start:dev
+pnpm start:dev
 
 # Production
-yarn build:prod && yarn start:prod
+pnpm build:prod && pnpm start:prod
 ```
 
 ### Bun
@@ -212,7 +212,7 @@ After creating your project, complete these steps:
 ### 3. Database Setup
 - [ ] Set up your PostgreSQL database
 - [ ] Update database configurations in `.env`
-- [ ] Run initial migrations: `yarn migration:generate initial`
+- [ ] Run initial migrations: `pnpm migration:generate initial`
 
 ### 4. Development Environment
 - [ ] Configure your IDE/editor with TypeScript support

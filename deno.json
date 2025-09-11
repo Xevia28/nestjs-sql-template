@@ -37,7 +37,7 @@
     "watch": "deno run --allow-net --allow-read --allow-env --allow-ffi --unstable-sloppy-imports --watch=src/ src/main.ts",
     "test": "deno test --allow-net --allow-read --allow-env --allow-ffi",
     "compile": "deno compile --allow-read --allow-write --allow-env --allow-ffi --allow-ffi --unstable --output dist/main ./src/main.ts",
-    "buildr": "yarn build:prod"
+    "buildr": "pnpm build:prod"
   },
   "fmt": {
     "options": {

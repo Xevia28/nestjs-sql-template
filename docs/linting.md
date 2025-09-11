@@ -305,7 +305,7 @@ The project uses TypeScript strict mode for enhanced type safety:
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn lint-staged
+pnpm lint-staged
 ```
 
 ### Lint-Staged
@@ -332,22 +332,22 @@ This configuration:
 
 ```bash
 # Run ESLint on all files
-yarn lint
+pnpm lint
 
 # Run ESLint with auto-fix
-yarn lint:fix
+pnpm lint:fix
 
 # Check Prettier formatting
-yarn prettier:check
+pnpm prettier:check
 
 # Format code with Prettier
-yarn prettier:write
+pnpm prettier:write
 
 # Run TypeScript compiler check
-yarn type-check
+pnpm type-check
 
 # Run all quality checks
-yarn quality:check
+pnpm quality:check
 ```
 
 **Package.json scripts**:
@@ -360,7 +360,7 @@ yarn quality:check
     "prettier:check": "prettier --check \"src/**/*.ts\"",
     "prettier:write": "prettier --write \"src/**/*.ts\"",
     "type-check": "tsc --noEmit",
-    "quality:check": "yarn lint && yarn prettier:check && yarn type-check"
+    "quality:check": "pnpm lint && pnpm prettier:check && pnpm type-check"
   }
 }
 ```
@@ -568,19 +568,19 @@ module.exports = {
 # VS Code: Ctrl+Shift+P > "TypeScript: Restart TS Server"
 
 # Check ESLint output
-yarn lint --debug
+pnpm lint --debug
 ```
 
 **Prettier conflicts with ESLint**:
 ```bash
 # Check for conflicting rules
-yarn eslint-config-prettier src/main.ts
+pnpm eslint-config-prettier src/main.ts
 ```
 
 **Import resolution errors**:
 ```bash
 # Check TypeScript paths
-yarn tsc --noEmit --listFiles
+pnpm tsc --noEmit --listFiles
 ```
 
 ### Performance Issues
@@ -588,7 +588,7 @@ yarn tsc --noEmit --listFiles
 **Slow linting**:
 ```bash
 # Use ESLint cache
-yarn lint --cache
+pnpm lint --cache
 
 # Exclude unnecessary files
 echo "dist/" >> .eslintignore

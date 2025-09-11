@@ -28,7 +28,7 @@
 Ensure you have the required tools installed:
 
 - [Node.js](https://nodejs.org/en/) (v18+ LTS recommended)
-- [Yarn](https://yarnpkg.com/lang/en/docs/install/) (v1.22.22+)
+- [pnpm](https://pnpmpkg.com/lang/en/docs/install/) (v1.22.22+)
 - [PostgreSQL](https://www.postgresql.org/) (v12+)
 - [Git](https://git-scm.com/)
 
@@ -36,10 +36,10 @@ Ensure you have the required tools installed:
 
 ```bash
 # Install dependencies from package.json
-yarn install
+pnpm install
 ```
 
-> **Note**: Don't delete `yarn.lock` before installation. See more in [Yarn docs](https://classic.yarnpkg.com/en/docs/yarn-lock/)
+> **Note**: Don't delete `pnpm.lock` before installation. See more in [pnpm docs](https://classic.pnpmpkg.com/en/docs/pnpm-lock/)
 
 ## Database Configuration
 
@@ -100,26 +100,26 @@ export const dataSource = new DataSource({
 rm -rf src/database/migrations/*
 
 # Generate new migrations for MySQL
-yarn migration:generate ./src/database/migrations/InitialMigration
+pnpm migration:generate ./src/database/migrations/InitialMigration
 ```
 
 ### Database Operations
 
 ```bash
 # Create a new migration file
-yarn migration:create MigrationName
+pnpm migration:create MigrationName
 
 # Generate migration from entity changes
-yarn migration:generate MigrationName
+pnpm migration:generate MigrationName
 
 # Run pending migrations
-yarn typeorm migration:run
+pnpm typeorm migration:run
 
 # Revert the last migration
-yarn migration:revert
+pnpm migration:revert
 
 # Drop entire database schema (⚠️ destructive)
-yarn schema:drop
+pnpm schema:drop
 ```
 
 ## Development Server
@@ -128,16 +128,16 @@ The project uses Vite for fast development with hot module replacement:
 
 ```bash
 # Start development server with Vite (recommended)
-yarn start:dev
+pnpm start:dev
 
 # Alternative: Start with NestJS CLI
-yarn nest:start:dev
+pnpm nest:start:dev
 
 # Start with file watching
-yarn watch:dev
+pnpm watch:dev
 
 # Start with debugger enabled
-yarn nest:start:debug
+pnpm nest:start:debug
 ```
 
 > **Note**: If you're on Linux and see an `ENOSPC` error, you must [increase the number of available file watchers](https://stackoverflow.com/questions/22475849/node-js-error-enospc#answer-32600959).
@@ -183,7 +183,7 @@ Use NestJS CLI for rapid development:
 
 ```bash
 # Install NestJS CLI globally (if not already installed)
-yarn global add @nestjs/cli
+pnpm global add @nestjs/cli
 
 # Generate a new module
 nest generate module feature-name
@@ -198,8 +198,8 @@ nest generate controller feature-name
 nest generate resource feature-name
 
 # Use project-specific generator
-yarn generate service feature-name
-yarn g controller feature-name
+pnpm generate service feature-name
+pnpm g controller feature-name
 ```
 
 > **Note**: The project includes custom schematics via `awesome-nestjs-schematics` for enhanced code generation.
@@ -289,7 +289,7 @@ docker-compose -f docker-compose_mysql.yml up
    git checkout -b feature/new-feature
 
    # Generate module structure
-   yarn g resource feature-name
+   pnpm g resource feature-name
 
    # Implement feature
    # Write tests
@@ -299,27 +299,27 @@ docker-compose -f docker-compose_mysql.yml up
 2. **Code Quality**:
    ```bash
    # Run linting
-   yarn lint
+   pnpm lint
 
    # Fix linting issues
-   yarn lint:fix
+   pnpm lint:fix
 
    # Run tests
-   yarn test
+   pnpm test
 
    # Check test coverage
-   yarn test:cov
+   pnpm test:cov
    ```
 
 3. **Database Changes**:
    ```bash
    # Create/modify entities
    # Generate migration
-   yarn migration:generate FeatureName
+   pnpm migration:generate FeatureName
 
    # Review generated migration
    # Run migration
-   yarn typeorm migration:run
+   pnpm typeorm migration:run
    ```
 
 ## Debugging
@@ -352,13 +352,13 @@ Create `.vscode/launch.json`:
 
 ```bash
 # Start with debugger
-yarn nest:start:debug
+pnpm nest:start:debug
 
 # Debug tests
-yarn test:debug
+pnpm test:debug
 
 # Debug specific test file
-yarn test:debug -- user.service.spec.ts
+pnpm test:debug -- user.service.spec.ts
 ```
 
 ## Performance Optimization
@@ -391,7 +391,7 @@ yarn test:debug -- user.service.spec.ts
 
 ### Production Considerations
 
-- Use `yarn build:prod` for optimized builds
+- Use `pnpm build:prod` for optimized builds
 - Enable compression middleware
 - Configure proper caching strategies
 - Set up monitoring and logging

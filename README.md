@@ -4,5 +4,5 @@
 
 ```bash
 # Run development server
-yarn dev
+pnpm dev
 ```

@@ -143,19 +143,19 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package.json yarn.lock ./
+COPY package.json pnpm.lock ./
 
 # Install dependencies
-RUN yarn install --frozen-lockfile --production=false
+RUN pnpm install --frozen-lockfile --production=false
 
 # Copy source code
 COPY . .
 
 # Build the application
-RUN yarn build:prod
+RUN pnpm build:prod
 
 # Remove dev dependencies
-RUN yarn install --frozen-lockfile --production=true && yarn cache clean
+RUN pnpm install --frozen-lockfile --production=true && pnpm cache clean
 
 # Production stage
 FROM node:18-alpine AS production
@@ -311,20 +311,20 @@ git clone https://github.com/your-username/your-nest-app.git
 cd your-nest-app
 
 # 2. Install dependencies
-yarn install --frozen-lockfile
+pnpm install --frozen-lockfile
 
 # 3. Build application
-yarn build:prod
+pnpm build:prod
 
 # 4. Set up environment
 cp .env.example .env
 # Edit .env with production values
 
 # 5. Run database migrations
-yarn typeorm migration:run
+pnpm typeorm migration:run
 
 # 6. Start application
-yarn start:prod
+pnpm start:prod
 ```
 
 ### Process Management
@@ -525,7 +525,7 @@ gcloud app logs tail -s default
 
 ```
 web: node dist/main.js
-release: yarn typeorm migration:run
+release: pnpm typeorm migration:run
 ```
 
 **`package.json` scripts**:
@@ -533,7 +533,7 @@ release: yarn typeorm migration:run
 ```json
 {
   "scripts": {
-    "heroku-postbuild": "yarn build:prod"
+    "heroku-postbuild": "pnpm build:prod"
   }
 }
 ```
@@ -558,7 +558,7 @@ heroku config:set JWT_SECRET=your-jwt-secret
 git push heroku main
 
 # Run migrations
-heroku run yarn typeorm migration:run
+heroku run pnpm typeorm migration:run
 
 # View logs
 heroku logs --tail
@@ -576,7 +576,7 @@ services:
   github:
     repo: your-username/nest-boilerplate
     branch: main
-  run_command: yarn start:prod
+  run_command: pnpm start:prod
   environment_slug: node-js
   instance_count: 1
   instance_size_slug: basic-xxs
@@ -616,16 +616,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'yarn'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Run tests
-        run: yarn test:cov
+        run: pnpm test:cov
 
       - name: Run e2e tests
-        run: yarn test:e2e
+        run: pnpm test:e2e
 
   build-and-deploy:
     needs: test
@@ -637,13 +637,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'yarn'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build application
-        run: yarn build:prod
+        run: pnpm build:prod
 
       - name: Build Docker image
         run: |
@@ -685,9 +685,9 @@ test:
     paths:
       - node_modules/
   script:
-    - yarn install --frozen-lockfile
-    - yarn test:cov
-    - yarn test:e2e
+    - pnpm install --frozen-lockfile
+    - pnpm test:cov
+    - pnpm test:e2e
 
 build:
   stage: build
@@ -722,13 +722,13 @@ deploy:
 pg_dump -h localhost -U username -d database_name > backup.sql
 
 # 2. Run migrations
-yarn typeorm migration:run
+pnpm typeorm migration:run
 
 # 3. Verify migration
-yarn typeorm migration:show
+pnpm typeorm migration:show
 
 # 4. Rollback if needed (be careful!)
-yarn typeorm migration:revert
+pnpm typeorm migration:revert
 ```
 
 **Zero-downtime migration approach**:
@@ -751,7 +751,7 @@ yarn typeorm migration:revert
 - Configure proper CORS settings
 - Implement rate limiting
 - Use security headers (helmet.js)
-- Regular security audits (`yarn audit`)
+- Regular security audits (`pnpm audit`)
 
 ### Infrastructure Security
 - Use private networks for database connections
@@ -802,7 +802,7 @@ logger.log(`Application is running on: ${await app.getUrl()}`);
 **Sentry Integration**:
 
 ```bash
-yarn add @sentry/node
+pnpm add @sentry/node
 ```
 
 ```typescript
