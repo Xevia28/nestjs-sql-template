@@ -72,7 +72,7 @@ export class VisaTypeService {
     return new PageDto(entities.toDtos(), pageMetaDto);
   }
 
-  async findVisaTypeById(id: Uuid): Promise<VisaTypeDto> {
+  async findVisaTypeById(id: string): Promise<VisaTypeDto> {
     const visaType = await this.visaTypeRepository.findOne({
       where: { id },
     });
@@ -103,7 +103,7 @@ export class VisaTypeService {
   }
 
   async updateVisaType(
-    id: Uuid,
+    id: string,
     updateVisaTypeDto: UpdateVisaTypeDto,
   ): Promise<VisaTypeDto> {
     const visaType = await this.visaTypeRepository.findOne({
@@ -131,7 +131,7 @@ export class VisaTypeService {
     return updatedVisaType.toDto();
   }
 
-  async deleteVisaType(id: Uuid): Promise<void> {
+  async deleteVisaType(id: string): Promise<void> {
     const visaType = await this.visaTypeRepository.findOne({
       where: { id },
     });
@@ -143,7 +143,7 @@ export class VisaTypeService {
     await this.visaTypeRepository.remove(visaType);
   }
 
-  async toggleVisaTypeStatus(id: Uuid): Promise<VisaTypeDto> {
+  async toggleVisaTypeStatus(id: string): Promise<VisaTypeDto> {
     const visaType = await this.visaTypeRepository.findOne({
       where: { id },
     });

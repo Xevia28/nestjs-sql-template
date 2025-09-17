@@ -4,14 +4,13 @@ import type { AbstractEntity } from '../abstract.entity.ts';
 
 export class AbstractDto {
   @UUIDField()
-  id!: Uuid;
+  id!: string;
 
   @DateField()
   createdAt!: Date;
 
   @DateField()
   updatedAt!: Date;
-
 
   constructor(entity: AbstractEntity, options?: { excludeFields?: boolean }) {
     if (!options?.excludeFields) {
@@ -21,4 +20,3 @@ export class AbstractDto {
     }
   }
 }
-

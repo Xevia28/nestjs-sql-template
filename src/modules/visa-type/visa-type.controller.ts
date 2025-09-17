@@ -78,7 +78,7 @@ export class VisaTypeController {
     description: 'Visa type retrieved successfully',
     type: VisaTypeDto,
   })
-  async getVisaTypeById(@UUIDParam('id') id: Uuid): Promise<VisaTypeDto> {
+  async getVisaTypeById(@UUIDParam('id') id: string): Promise<VisaTypeDto> {
     return this.queryBus.execute(new GetVisaTypeByIdQuery(id));
   }
 
@@ -101,7 +101,7 @@ export class VisaTypeController {
     type: VisaTypeDto,
   })
   async updateVisaType(
-    @UUIDParam('id') id: Uuid,
+    @UUIDParam('id') id: string,
     @Body() updateVisaTypeDto: UpdateVisaTypeDto,
   ): Promise<VisaTypeDto> {
     return this.commandBus.execute(
@@ -115,7 +115,7 @@ export class VisaTypeController {
   @ApiNoContentResponse({
     description: 'Visa type deleted successfully',
   })
-  async deleteVisaType(@UUIDParam('id') id: Uuid): Promise<void> {
+  async deleteVisaType(@UUIDParam('id') id: string): Promise<void> {
     return this.commandBus.execute(new DeleteVisaTypeCommand(id));
   }
 }

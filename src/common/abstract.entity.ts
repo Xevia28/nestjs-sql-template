@@ -4,9 +4,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import type {
-  AbstractDto,
-} from './dto/abstract.dto.ts';
+import type { AbstractDto } from './dto/abstract.dto.ts';
 
 /**
  * Abstract Entity
@@ -21,7 +19,7 @@ export abstract class AbstractEntity<
   O = never,
 > {
   @PrimaryGeneratedColumn('uuid')
-  id!: Uuid;
+  id!: string;
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -32,7 +30,6 @@ export abstract class AbstractEntity<
     type: 'timestamp',
   })
   updatedAt!: Date;
-
 
   toDto(options?: O): DTO {
     const dtoClass = Object.getPrototypeOf(this).dtoClass;
@@ -46,4 +43,3 @@ export abstract class AbstractEntity<
     return new dtoClass(this, options);
   }
 }
-
